@@ -36,4 +36,4 @@ const MessageSchema = new Schema<IMessage>({
 MessageSchema.index({toUserId: 1, timestamp: -1})
 MessageSchema.index({fromUserId: 1, toUserId: 1})
 
-export const message = mongoose.model<IMessage>('Message', MessageSchema)
+export const Message = mongoose.model<IMessage>('Message', MessageSchema)

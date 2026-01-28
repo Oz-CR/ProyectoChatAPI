@@ -1,14 +1,14 @@
 import { Router } from 'express';
+import { sendMessage, markAsRead, getConversations, getMessages } from '../controllers/messageController';
+import { authMiddleware } from '../middleware/authMiddleware';
 
 const router = Router();
 
-// Temporal - implementaremos después
-router.get('/:userId', (req, res) => {
-  res.json({ message: 'Get messages endpoint' });
-});
+router.use(authMiddleware)
 
-router.post('/', (req, res) => {
-  res.json({ message: 'Send message endpoint' });
-});
+router.post('/send', authMiddleware, sendMessage)
+router.patch('/:messageId/read', authMiddleware, markAsRead)
+router.get('/get-messages', getMessages),
+router.get('/get-conversations', getConversations)
 
 export default router;

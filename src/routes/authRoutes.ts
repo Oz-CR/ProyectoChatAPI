@@ -1,15 +1,12 @@
 import { Router } from 'express';
 import { Request, Response } from 'express';
+import { register, login, listUsers } from '../controllers/authController';
+import { authMiddleware } from '../middleware/authMiddleware';
 
 const router = Router();
 
-// Temporal - implementaremos después
-router.post('/register', (req, res) => {
-  res.json({ message: 'Register endpoint' });
-});
-
-router.post('/login', (req, res) => {
-  res.json({ message: 'Login endpoint' });
-});
+router.post('/register', register)
+router.post('/login', login)
+router.get('/list-users', listUsers)
 
 export default router;
