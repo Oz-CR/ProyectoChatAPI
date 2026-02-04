@@ -33,8 +33,8 @@ export const sendMessage = async (req: Request, res: Response): Promise<void> =>
 
     // Poblar información de usuarios
     await message.populate([
-      { path: 'fromUser', select: 'username' },
-      { path: 'toUser', select: 'username' }
+      { path: 'fromUserId', select: 'username' },
+      { path: 'toUserId', select: 'username' }
     ]);
 
     res.status(201).json({
